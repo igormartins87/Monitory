@@ -1,0 +1,26 @@
+services:
+
+  flask:
+    build: -
+    container_name: 'flask-app'
+    ports:
+      - '5000:5000'
+
+  prometheus:
+    image: prom/prometheus:lastest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml: /etc/prometheus/prometheus.yml:ro
+    ports:
+      -'9090:9090'
+
+  grafana:
+    image: grafana/grafana:lastest
+    container_name: grafana
+    ports:
+      -'3000:3000'
+    depends_on:
+      - prometheus
+
+
+
