@@ -3,7 +3,8 @@ from prometheus_client import Counter, Summary, generate_latest, CONTENT_TYPE_LA
 
 app = Flask(__name__)
 
-REQUEST_COUNT = Counter('app_request_total','total number of requests',['method','endpoint'])
+REQUEST_COUNT = Counter('app_requests_total','total number of requests',['method','endpoint'])
+
 EXCEPTION = Counter('app_exception_total','total number of unhandled exceptions',['endpoint','exception_typer'])
 PRINT_NUMBER = Summary('app_print_number_summary','Sumarização das informações sobre os números que foram passados')
 
